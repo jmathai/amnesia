@@ -44,6 +44,6 @@ if __name__ == "__main__":
             try:
                 api.destroy_status(status.id)
                 print("Deleted {}".format(status.id))
-                print(status.text)
+                print(status.text.encode('utf-8'))
             except TweepError as err:
                 print("Could not delete {}".format(status.id))
