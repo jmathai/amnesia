@@ -1,6 +1,8 @@
 # Amnesia for Twitter
 
-This is a simple script that will automatically delete all of your tweets after a specified number of days. If you use Twitter for conversation and not posterity then you'll like Amnesia.
+This is a simple script that will automatically delete all of your tweets and likes that are older than a specified number of days. If you use Twitter for conversation and not posterity then you'll like Amnesia.
+
+If you want a copy of your tweets for your own personal records, make sure you [download your Twitter archive](https://support.twitter.com/articles/20170160) _before_ running Amnesia.
 
 ## Requirements
 
@@ -42,4 +44,4 @@ I'm not going to explain this.
 
 ### Automating Amnesia
 
-You'll want to periodically run amnesia so that it keeps your Tweets pruned. I use my [crontab](https://en.wikipedia.org/wiki/Cron). On Linux or OS X you can edit your crontab by typing `crontab -e` in a terminal.
+You'll want to periodically run amnesia so that it keeps your tweets pruned. I use my [crontab](https://en.wikipedia.org/wiki/Cron). On Linux or OS X you can edit your crontab by typing `crontab -e` in a terminal.
