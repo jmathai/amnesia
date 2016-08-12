@@ -47,3 +47,17 @@ if __name__ == "__main__":
                 print(status.text.encode('utf-8'))
             except TweepError as err:
                 print("Could not delete {}".format(status.id))
+
+    """
+    Loop over your favorites.
+    Compare the favorite's date with the threshold.
+    If the favorite is older than the threshold we delete it.
+    """
+    for status in Cursor(api.favorites).items():
+        if status.created_at < delete_before:
+            try:
+                api.destroy_favorite(status.id)
+                print("Un-favorited {}".format(status.id))
+                print(status.text.encode('utf-8'))
+            except TweepError as err:
+                print("Could not un-favorite {}".format(status.id))
