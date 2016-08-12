@@ -1,6 +1,6 @@
 # Amnesia for Twitter
 
-This is a simple script that will automatically delete all of your tweets after a specified number of days. If you use Twitter for conversation and not posterity then you'll like Amnesia.
+This is a simple script that will automatically delete all of your tweets and likes that are older than a specified number of days. If you use Twitter for conversation and not posterity then you'll like Amnesia.
 
 ## Requirements
 
