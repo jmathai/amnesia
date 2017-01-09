@@ -9,10 +9,9 @@ from tweepy import API, Cursor, OAuthHandler
 from tweepy.error import TweepError
 
 
-# By default, do not actually delete any tweet/like.
-# Just print out what will be deleted.
-# Set this to False to actually delete tweets/likes.
-DRY_RUN = True
+# By default, actually delete tweet/likes.
+# Set this to True to just print what will be deleted.
+dry_run = twitter_config.get('dry_run', False)
 
 
 if __name__ == "__main__":
@@ -51,7 +50,7 @@ if __name__ == "__main__":
     for status in Cursor(api.user_timeline).items():
         if status.created_at < delete_before:
             try:
-                if not DRY_RUN:
+                if not dry_run:
                     api.destroy_status(status.id)
                 print("Deleted {}".format(status.id))
                 print(status.text.encode('utf-8'))
@@ -71,7 +70,7 @@ if __name__ == "__main__":
     for status in Cursor(api.favorites).items():
         if status.created_at < delete_before:
             try:
-                if not DRY_RUN:
+                if not dry_run:
                     api.destroy_favorite(status.id)
                 print("Un-favorited {}".format(status.id))
                 print(status.text.encode('utf-8'))

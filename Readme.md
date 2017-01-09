@@ -34,8 +34,8 @@ pip install -r requirements.txt
 
 ### Configure Amnesia
 
-You'll need to copy the `configs-sample.py` to `config.py` and update the oauth
-values.
+You'll need to copy the `configs-sample.py` to `configs.py` and update the
+oauth values.
 
 ```
 cp configs-sample.py configs.py
@@ -48,7 +48,10 @@ older than that many days.
 
 ### Running Amnesia
 
-Set ```DRY_RUN=False``` in ```amnesia.py```. Then, run the file.
+*By default, Amnesia will delete tweets/likes.*
+If you just want to try a dry run, *make sure* you set ```dry_run=True``` in
+```configs.py```.
+Either way, you must run ```amnesia.py```.
 
 ### Cleaning up
 
