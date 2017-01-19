@@ -49,9 +49,8 @@ older than that many days.
 ### Running Amnesia
 
 *By default, Amnesia will delete tweets/likes.*
-If you just want to try a dry run, *make sure* you set ```dry_run=True``` in
-```configs.py```.
-Either way, you must run ```amnesia.py```.
+If you just want to try a dry run, *make sure* you set `dry_run=True` in `configs.py`.
+Either way, you must run `amnesia.py`.
 
 ### Cleaning up
 
