@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import csv
 import sys
 import time
 from datetime import datetime, timedelta
@@ -46,16 +47,27 @@ if __name__ == "__main__":
     Loop over your timeline.
     Compare the tweet's date with the threshold.
     If the tweet is older than the threshold we delete it.
-    """
-    for status in Cursor(api.user_timeline).items():
-        if status.created_at < delete_before:
-            try:
-                if not dry_run:
-                    api.destroy_status(status.id)
-                print("Deleted {}".format(status.id))
-                print(status.text.encode('utf-8'))
-            except TweepError as err:
-                print("Could not delete {}".format(status.id))
+   """
+    with open('tweets.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        # skip initial row
+        line = 0
+        for row in reader:
+            if line == 0:
+                pass
+            else:
+                status_id = row[0]
+                status_created_at = datetime.strptime(row[3], "%Y-%m-%d %H:%M:%S +0000")
+                status_text = row[5]
+                if status_created_at < delete_before:
+                    try:
+                        if not dry_run:
+                            api.destroy_status(status_id)
+                        print("Deleted {}".format(status_id))
+                        print(status_text.encode('utf-8'))
+                    except TweepError as err:
+                        print("Could not delete {}".format(status_id))
+            line += 1
 
     """
     Loop over your favorites.
