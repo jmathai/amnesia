@@ -5,7 +5,7 @@ likes that are older than a specified number of days.
 If you use Twitter for conversation and not posterity then you'll like Amnesia.
 
 If you want a copy of your tweets for your own personal records, make sure you
-[download your Twitter archive](https://support.twitter.com/articles/20170160)
+[download your Twitter archive](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)
 _before_ running Amnesia.
 
 Remember: Amnesia cannot delete offline copies (e.g., screenshots, or web
@@ -48,6 +48,8 @@ older than that many days.
 
 ### Running Amnesia
 
+Unzip your Twitter archive, and copy `tweet.js` and `like.js` to this folder.
+
 *By default, Amnesia will delete tweets/likes.*
 If you just want to try a dry run, *make sure* you set ```dry_run=True``` in
 ```configs.py```.
@@ -65,5 +67,4 @@ You may want to periodically run amnesia so that it keeps your tweets pruned.
 I use my [crontab](https://en.wikipedia.org/wiki/Cron).
 On Linux or OS X you can edit your crontab by typing `crontab -e` in a
 terminal.
-
 
