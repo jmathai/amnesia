@@ -72,4 +72,3 @@ I use my [crontab](https://en.wikipedia.org/wiki/Cron).
 On Linux or OS X you can edit your crontab by typing `crontab -e` in a
 terminal.
 
-
