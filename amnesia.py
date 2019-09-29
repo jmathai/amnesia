@@ -87,6 +87,6 @@ if __name__ == "__main__":
     with open("configs.json") as configs_json:
         c = json.load(configs_json)
         api = init_api(c["consumer_key"], c["consumer_secret"], c["access_token"], c["access_token_secret"])
-        #del_tweets(api, c["delete_after_days"])
+        del_tweets(api, c["delete_after_days"])
         del_likes(api)
 
