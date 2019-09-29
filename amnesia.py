@@ -66,8 +66,8 @@ def del_likes(api):
         likes = json.loads(like_json)
 
         while len(likes):
-            like = likes.pop()
-            like = like["like"]
+            wrapper = likes.pop()
+            like = wrapper["like"]
             status_id = like["tweetId"]
             status_text = like["fullText"]
 
@@ -79,6 +79,8 @@ def del_likes(api):
                 print("Could not unlike {}: {}".format(status_id, errors))
                 # https://dev.twitter.com/rest/public/rate-limiting
                 if any(e["code"] == 88 for e in errors):
+                    # Add back to be unliked later.
+                    likes.append(wrapper)
                     print("Sleeping for 15m...")
                     time.sleep(15*60)
 
