@@ -25,7 +25,7 @@ You'll need the following.
 ### Download Code and Dependencies
 
 ```
-git clone https://github.com/jmathai/amnesia.git
+git clone https://github.com/trishankkarthik/amnesia.git
 cd amnesia
 virtualenv venv
 source venv/bin/activate
