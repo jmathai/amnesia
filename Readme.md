@@ -5,7 +5,7 @@ likes that are older than a specified number of days.
 If you use Twitter for conversation and not posterity then you'll like Amnesia.
 
 If you want a copy of your tweets for your own personal records, make sure you
-[download your Twitter archive](https://support.twitter.com/articles/20170160)
+[download your Twitter archive](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)
 _before_ running Amnesia.
 
 Remember: Amnesia cannot delete offline copies (e.g., screenshots, or web
@@ -29,16 +29,16 @@ git clone https://github.com/jmathai/amnesia.git
 cd amnesia
 virtualenv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Configure Amnesia
 
-You'll need to copy the `configs-sample.py` to `configs.py` and update the
+You'll need to copy the `configs-sample.json` to `configs.json` and update the
 oauth values.
 
 ```
-cp configs-sample.py configs.py
+cp configs-sample.json configs.json
 ```
 
 The `delete_after_days` value specifies that you want to delete all tweets
@@ -48,10 +48,16 @@ older than that many days.
 
 ### Running Amnesia
 
-*By default, Amnesia will delete tweets/likes.*
-If you just want to try a dry run, *make sure* you set ```dry_run=True``` in
-```configs.py```.
-Either way, you must run ```amnesia.py```.
+Unzip your Twitter archive, and copy `tweet.js` and `like.js` to this folder.
+
+*By default, Amnesia will delete tweets/likes.* You may run it like so in a shell:
+
+```bash
+source venv/bin/activate
+time amnesia.py &>> amnesia.log
+```
+
+And `tail -f amnesia.log` in another shell to monitor its progress.
 
 ### Cleaning up
 
