@@ -43,7 +43,8 @@ def del_tweets(api, delete_after_days):
         tweet_json = tweet_js[len(TWEET_PREFIX):]
         tweets = json.loads(tweet_json)
 
-        for tweet in tweets:
+        for wrapper in tweets:
+            tweet = wrapper["tweet"]
             status_id = tweet["id"]
             status_created_at = datetime.strptime(tweet["created_at"], "%a %b %d %H:%M:%S +0000 %Y")
             status_text = tweet["full_text"]
