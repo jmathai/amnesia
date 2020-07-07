@@ -1,2 +1,6 @@
 **/*.pyc
-configs.py
+*.js
+*.log
+*.swp
+venv/
+configs.json
