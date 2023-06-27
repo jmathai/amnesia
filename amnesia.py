@@ -15,7 +15,7 @@ def init_api(consumer_key, consumer_secret, access_token, access_token_secret):
     auth.set_access_token(access_token, access_token_secret)
 
     # Create API module using authentication.
-    api = API(auth)
+    api = API(auth, retry_count=1, retry_delay=1, wait_on_rate_limit=True)
     try:
         verify = api.verify_credentials()
         user_id = verify.id
@@ -36,8 +36,8 @@ def del_tweets(api, delete_after_days):
     # Loop over your timeline.
     # Compare the tweet"s date with the threshold.
     # If the tweet is older than the threshold we delete it.
-    with open("tweet.js") as tweet_js:
-        TWEET_PREFIX = "window.YTD.tweet.part0 = "
+    with open("tweets.js") as tweet_js:
+        TWEET_PREFIX = "window.YTD.tweets.part0 = "
         tweet_js = tweet_js.read()
         assert tweet_js.startswith(TWEET_PREFIX)
         tweet_json = tweet_js[len(TWEET_PREFIX):]
@@ -70,7 +70,7 @@ def del_likes(api):
             wrapper = likes.pop()
             like = wrapper["like"]
             status_id = like["tweetId"]
-            status_text = like["fullText"]
+            status_text = like.get("fullText", u"None")
 
             try:
                 api.destroy_favorite(status_id)
